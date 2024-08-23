@@ -23,7 +23,10 @@ const CartItem = ({id, quantity}: CartItemProps) => {
                     <Col style={{width: '30%'}}>
                         <div className="me-auto w-100">
                             <div>
-                                {item.name} {quantity > 1 && <span className="text-muted" style={{fontSize: '.65rem'}}>x{quantity}</span>}
+                                {item.name} 
+                            </div>
+                            <div>
+                                {quantity > 1 && <span className="text-muted" style={{fontSize: '.65rem'}}>x{quantity}</span>}
                             </div>
                             <div className="text-muted" style={{fontSize: '.75rem'}}>
                                 {formatCurrency(item.price)}
