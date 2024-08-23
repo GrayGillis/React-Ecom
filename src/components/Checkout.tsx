@@ -7,7 +7,10 @@ type CheckoutProps = {
 const Checkout = ({ isOpen }: CheckoutProps) => {
     const { closeCheckout, closeCart } = useShoppingCart()
 
-    const handleSubmit = () => {
+    const handleSubmit = (event: any) => {
+        const fd = new FormData(event.target)
+        const checkoutData = Object.fromEntries(fd.entries())
+        console.log(checkoutData)
         closeCheckout()
         closeCart()
     }
@@ -20,7 +23,7 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form className='mb-4' onSubmit={handleSubmit}>
+                <Form className='mb-4' onSubmit={(e) => handleSubmit(e)}>
                     <Form.Label>Full Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter full name" />
                     <Form.Label>Email address</Form.Label>
