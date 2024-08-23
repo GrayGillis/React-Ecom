@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react"
 import ShoppingCart from "../components/ShoppingCart"
 import { useLocalStorage } from "../hooks/useLocalStorage"
+import Checkout from "../components/Checkout"
 
 type ShoppingCartProviderProps = {
     children: ReactNode
@@ -9,6 +10,8 @@ type ShoppingCartProviderProps = {
 type ShoppingCartContext = {
     openCart: () => void
     closeCart: () => void
+    openCheckout: () => void
+    closeCheckout: () => void
     getItemQuantity: (id: number) => number
     increaseCartQuantity: (id: number) => void
     decreaseCartQuantity: (id: number) => void
@@ -30,7 +33,8 @@ export const useShoppingCart = () => {
 
 export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) => {
     const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart",[]);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+    const [isCheckoutOpen, setIsCheckoutOpen] = useState<boolean>(false);
 
     const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0
     );
@@ -78,16 +82,25 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
     }
 
     const openCart = () => {
-        setIsOpen(true);
+        setIsCartOpen(true);
     }
 
     const closeCart = () => {
-        setIsOpen(false);
+        setIsCartOpen(false);
+    }
+
+    const openCheckout = () => {
+        setIsCheckoutOpen(true);
+    }
+
+    const closeCheckout = () => {
+        setIsCheckoutOpen(false);
     }
 
     return <ShoppingCartContext.Provider 
-    value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartItems, cartQuantity, openCart, closeCart }}>
+    value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartItems, cartQuantity, openCart, closeCart, openCheckout, closeCheckout }}>
         {children}
-        <ShoppingCart isOpen={isOpen}/>
+        <ShoppingCart isOpen={isCartOpen}/>
+        <Checkout isOpen={isCheckoutOpen}/>
     </ShoppingCartContext.Provider>
 }
