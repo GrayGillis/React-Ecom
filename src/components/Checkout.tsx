@@ -20,7 +20,7 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form className='mb-4'>
+                <Form className='mb-4' onSubmit={handleSubmit}>
                     <Form.Label>Full Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter full name" />
                     <Form.Label>Email address</Form.Label>
@@ -36,7 +36,7 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                 </Form>
                 <div className="d-flex justify-content-between">
                     <Button variant='danger' onClick={closeCheckout}>Close</Button>
-                    <Button variant='success' onClick={handleSubmit}>Submit</Button>
+                    <Button variant='success'>Submit</Button>
                 </div>
             </Modal.Body>
         </Modal>
