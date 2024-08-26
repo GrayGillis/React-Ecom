@@ -1,6 +1,6 @@
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
+import { Button, Form, Modal, Row } from 'react-bootstrap'
 import { useShoppingCart } from '../context/ShoppingCartContext'
-import { MouseEvent, useEffect, useState, FormEvent } from 'react'
+import { MouseEvent, useState } from 'react'
 import "bootstrap/dist/css/bootstrap.css";
 
 type CheckoutProps = {
@@ -29,20 +29,14 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
     const handleSubmit = (event: MouseEvent) => {
         event.preventDefault()
         if (checkData()) {
+            //set loading state
             console.log('test')
             setTimeout(() => {
                 closeCheckout()
                 closeCart()
             }, 2000)
         }
-        console.log(checkData())
         setValidated(true)
-        
-        //const fd = new FormData(event.currentTarget)
-        // const fd = document.querySelector('form')
-        // const checkoutData = Object.fromEntries(fd?.entries)
-
-        console.log(checkoutData)
     }
 
     const handleInputChange = (identifier: string, value: string) => {
@@ -59,7 +53,6 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                     Checkout
                 </Modal.Title>
             </Modal.Header>
-            
             <Modal.Body>
                 <Form className='mb-4' noValidate validated={validated}>
                     <Row className="mb-3">
@@ -69,9 +62,13 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                                 value={checkoutData.name} 
                                 onChange={(e) => handleInputChange('name', e.target.value)} 
                                 required
-                                isInvalid={validated && !/^[a-zA-Z]+$/.test(checkoutData.name)} />
+                                pattern='^[a-zA-Z]+$'
+                                isInvalid={validated && !(/^[a-zA-Z]+$/.test(checkoutData.name))} />
                             <Form.Control.Feedback type="invalid">
                                 Please provide a valid full name.
+                            </Form.Control.Feedback>
+                            <Form.Control.Feedback type="valid">
+                                Looks good!
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
@@ -85,6 +82,9 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                             <Form.Control.Feedback type="invalid">
                                 Please provide a valid email.
                             </Form.Control.Feedback>
+                            <Form.Control.Feedback type="valid">
+                                Looks good!
+                            </Form.Control.Feedback>
                     </Form.Group>       
                     <Form.Group>
                         <Form.Label>Phone Number</Form.Label>
@@ -97,6 +97,9 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                         <Form.Control.Feedback type='invalid'>
                             Please a valid phone number.
                         </Form.Control.Feedback>
+                        <Form.Control.Feedback type="valid">
+                                Looks good!
+                            </Form.Control.Feedback>
                     </Form.Group>
                     </Row>
                     <Row className='mb-3'>
@@ -111,6 +114,9 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                             <Form.Control.Feedback type='invalid'>
                                 Please a valid street address.
                             </Form.Control.Feedback>
+                            <Form.Control.Feedback type="valid">
+                                Looks good!
+                            </Form.Control.Feedback>
                         </Form.Group>
                         
                         <Form.Group>
@@ -119,10 +125,14 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                             value={checkoutData.city} 
                             onChange={(e) => handleInputChange('city', e.target.value)}
                             required
+                            pattern='^[a-zA-Z]+$'
                             isInvalid={validated && !/^[a-zA-Z]+$/.test(checkoutData.city)}
                             />
                             <Form.Control.Feedback type='invalid'>
                                 Please a valid city.
+                            </Form.Control.Feedback>
+                            <Form.Control.Feedback type="valid">
+                                Looks good!
                             </Form.Control.Feedback>
                         </Form.Group>
                         
@@ -137,6 +147,9 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                             />
                             <Form.Control.Feedback type='invalid'>
                                 Please a valid postal code.
+                            </Form.Control.Feedback>
+                            <Form.Control.Feedback type="valid">
+                                Looks good!
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Row>          
