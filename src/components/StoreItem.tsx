@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { formatCurrency } from '../util/formatCurrency'
 import { useShoppingCart } from '../context/ShoppingCartContext'
