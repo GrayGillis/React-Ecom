@@ -1,7 +1,7 @@
 {
   "name": "react-ecom-1",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "homepage": "https://graygillis.github.io/React-Ecom",
   "scripts": {
