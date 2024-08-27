@@ -16,6 +16,7 @@ type ShoppingCartContext = {
     increaseCartQuantity: (id: number) => void
     decreaseCartQuantity: (id: number) => void
     removeFromCart: (id: number) => void
+    clearCart: () => void
     cartQuantity: number
     cartItems: CartItem[]
 }
@@ -97,8 +98,12 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) =>
         setIsCheckoutOpen(false);
     }
 
+    const clearCart = () => {
+        setCartItems([])
+    }
+
     return <ShoppingCartContext.Provider 
-    value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartItems, cartQuantity, openCart, closeCart, openCheckout, closeCheckout }}>
+    value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartItems, cartQuantity, openCart, closeCart, openCheckout, closeCheckout, clearCart }}>
         {children}
         <ShoppingCart isOpen={isCartOpen}/>
         <Checkout isOpen={isCheckoutOpen}/>
