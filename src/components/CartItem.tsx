@@ -18,7 +18,7 @@ const CartItem = ({id, quantity}: CartItemProps) => {
             <Container className='mb-4'>
                 <Row md={2} xs={1} lg={3} className='mb-1 g-3'>
                     <Col style={{width: '45%'}}>
-                        <img src={item.imgUrl} style={{ width: '125px', height: '75px', objectFit: 'cover'}} />
+                        <img src={import.meta.env.BASE_URL + item.imgUrl} style={{ width: '125px', height: '75px', objectFit: 'cover'}} />
                     </Col>
                     <Col style={{width: '30%'}}>
                         <div className="me-auto w-100">
