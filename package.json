@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://GrayGillis.github.io/React-Ecom",
+  "homepage": "https://graygillis.github.io/React-Ecom/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
