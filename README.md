@@ -1,2 +1,4 @@
+# React-Ecom
+
 This project is an ecommerce store to show the following items, prices and images. It allows the user to add them to their own shopping cart in the app with the breakdowns of each item in their before they continue to checkout where they will have to fill out their personal info. This project taught me a lot about React context, forms, react-router and many other parts of development.
 [To access the website please click here](https://graygillis.github.io/React-Ecom/)
