@@ -1,26 +1,38 @@
 [
   {
     "id": 1,
-    "name": "Book",
-    "price": 20.99,
-    "imgUrl": "/imgs/book.jpg"
+    "name": "Adidas Cleats",
+    "price": 129.99,
+    "imgUrl": "/imgs/adidasCleats.png"
   },
   {
     "id": 2,
-    "name": "Computer",
-    "price": 1299,
-    "imgUrl": "/imgs/computer.jpg"
+    "name": "Nike Cleats",
+    "price": 139.99,
+    "imgUrl": "/imgs/nikeCleats.png"
   },
   {
     "id": 3,
-    "name": "Banana",
-    "price": 1.75,
-    "imgUrl": "/imgs/banana.jpg"
+    "name": "Puma Cleats",
+    "price": 119.99,
+    "imgUrl": "/imgs/pumaCleats.png"
   },
   {
     "id": 4,
-    "name": "Car",
-    "price": 14500,
-    "imgUrl": "/imgs/car.jpg"
+    "name": "Adidas Ball",
+    "price": 24.99,
+    "imgUrl": "/imgs/adidasBall.png"
+  },
+  {
+    "id": 5,
+    "name": "Nike Ball",
+    "price": 29.99,
+    "imgUrl": "/imgs/nikeBall.png"
+  },
+  {
+    "id": 6,
+    "name": "Puma Ball",
+    "price": 19.99,
+    "imgUrl": "/imgs/pumaBall.png"
   }
 ]
