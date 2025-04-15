@@ -21,9 +21,9 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
     })
 
     const checkData = () => {
-        const flag = /^[a-zA-Z]+$/.test(checkoutData.name) && /^\S+@\S+\.\S+$/.test(checkoutData.email) && (checkoutData.phone.length === 10) && 
-        /^[a-zA-Z0-9]+$/.test(checkoutData.street) && 
-        /^[a-zA-Z]+$/.test(checkoutData.city) && (checkoutData.postal.length === 5)
+        const flag = (checkoutData.name.length > 3) && /^\S+@\S+\.\S+$/.test(checkoutData.email) && (checkoutData.phone.length === 10) && 
+        (checkoutData.street.length > 3) && 
+        (checkoutData.city.length > 1) && (checkoutData.postal.length === 5)
         return flag
     }
 
