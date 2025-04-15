@@ -21,15 +21,23 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
     })
 
     const checkData = () => {
-        const flag = (checkoutData.name.length > 3) && /^\S+@\S+\.\S+$/.test(checkoutData.email) && (checkoutData.phone.length === 10) && 
-        (checkoutData.street.length > 3) && 
-        (checkoutData.city.length > 1) && (checkoutData.postal.length === 5)
+        const flag = (checkoutData.name.length > 0) && /^\S+@\S+\.\S+$/.test(checkoutData.email) && (checkoutData.phone.length === 10) && 
+        (checkoutData.street.length > 0) && 
+        (checkoutData.city.length > 0) && (checkoutData.postal.length === 5)
         return flag
     }
 
     const handleReset = () => {
         clearCart();
         setValidated(false);
+        setCheckoutData({
+            name: '',
+            email: '',
+            phone: '',
+            street: '',
+            city: '',
+            postal: ''
+        })
     };
 
     const handleSubmit = (event: MouseEvent) => {
@@ -96,8 +104,7 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                                         value={checkoutData.name} 
                                         onChange={(e) => handleInputChange('name', e.target.value)} 
                                         required
-                                        pattern='^[a-zA-Z]+$'
-                                        isInvalid={validated && !(/^[a-zA-Z]+$/.test(checkoutData.name))} 
+                                        isInvalid={validated && !checkoutData.name} 
                                         disabled={isLoading}
                                         />
                                     <Form.Control.Feedback type="invalid">
@@ -151,7 +158,7 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                                 value={checkoutData.street} 
                                 onChange={(e) => handleInputChange('street', e.target.value)}
                                 required
-                                isInvalid={validated && !/^[a-zA-Z0-9]+$/.test(checkoutData.street)}
+                                isInvalid={validated && !checkoutData.street}
                                 disabled={isLoading}
                                 />
                                 <Form.Control.Feedback type='invalid'>
@@ -171,8 +178,7 @@ const Checkout = ({ isOpen }: CheckoutProps) => {
                                     value={checkoutData.city} 
                                     onChange={(e) => handleInputChange('city', e.target.value)}
                                     required
-                                    pattern='^[a-zA-Z]+$'
-                                    isInvalid={validated && !/^[a-zA-Z]+$/.test(checkoutData.city)}
+                                    isInvalid={validated && !checkoutData.city}
                                     disabled={isLoading}
                                     />
                                     <Form.Control.Feedback type='invalid'>
